@@ -1,18 +1,18 @@
 export default async function About() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/albums")
-  const albums = await response.json()
+  const response = await fetch("https://jsonplaceholder.typicode.com/albums");
+  const albums = await response.json();
 
   return (
-    <div className="flex gap-8 flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center gap-8">
       {albums.map((album: { id: number; title: string }) => (
         <div
-          className="p-4 flex-col gap-4 rounded-3xl relative justify-center items-center flex w-48 h-48 border hover:bg-black transition hover:cursor-pointer bg-white/10"
+          className="relative flex h-48 w-48 flex-col items-center justify-center gap-4 rounded-3xl border-2 border-white/20 bg-white/10 p-4 text-slate-100 transition hover:cursor-pointer hover:bg-black"
           key={album.id}
         >
-          <p className="self-start absolute top-3 left-3">{album.id}</p>
+          <p className="absolute left-3 top-3 self-start">{album.id}</p>
           <h3 className="text-center capitalize">{album.title}</h3>
         </div>
       ))}
     </div>
-  )
+  );
 }
